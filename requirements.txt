@@ -4,3 +4,4 @@ djangorestframework==3.16.0
 PyPDF2
 requests
 python-dotenv
+django-cors-headers
