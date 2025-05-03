@@ -52,6 +52,7 @@ def extract_job_info_with_deepseek(text):
 
     Return a JSON in this format:
     {{
+        "description": "A concise 2–3 sentence summary of the job role",
       "skills": [...],
       "education_levels": [...],
       "experience": "...",
@@ -97,7 +98,6 @@ def score_cv_against_job(cv, job):
 
     matched = cv_keywords & job_keywords
     missing = job_keywords - cv_keywords
-
     score = len(matched) / len(job_keywords) if job_keywords else 0.0
 
     return round(score * 100, 2), json.dumps(list(matched)), json.dumps(list(missing))

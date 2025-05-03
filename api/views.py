@@ -2,7 +2,8 @@ import os
 from django.http import FileResponse, Http404, HttpResponse
 from django.shortcuts import render
 from django.views import View
-from rest_framework.views import APIView
+from rest_framework.generics import RetrieveAPIView
+from rest_framework.views import APIView 
 from rest_framework.response import Response
 from rest_framework import status
 from .models import CVScore, CandidateCV, JobPost
@@ -69,3 +70,16 @@ class CVScoreListView(APIView):
             return Response({"detail": "No CV scores found for this job."}, status=status.HTTP_404_NOT_FOUND)
         serializer = CVScoreSerializer(cv_scores, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
+class JobPostListView(APIView):
+    permission_classes = []
+
+    def get(self, request):
+        jobs = JobPost.objects.all().order_by('-id')  # Most recent first
+        serializer = JobPostSerializer(jobs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class JobPostDetailView(RetrieveAPIView):
+    queryset = JobPost.objects.all()
+    serializer_class = JobPostSerializer
+    permission_classes = []
+    lookup_field = 'id'  # or 'pk' (default)

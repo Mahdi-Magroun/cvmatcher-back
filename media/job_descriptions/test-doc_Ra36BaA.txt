@@ -1,0 +1,41 @@
+Job Title:  backend development
+
+Responsibilities:
+- Assist in recruitment, screening, and onboarding processes.
+- Maintain employee records and documentation.
+- Coordinate training and development sessions.
+- Handle employee inquiries regarding HR policies.
+
+Requirements:
+ "Master's degree in DevOps and Site Reliability Engineering",
+ "Bachelor degree in computer science"
+
+Skills:
+    "Kubernetes",
+        "Helm",
+        "Istio service mesh",
+        "Kiali",
+        "Jaeger",
+        "Prometheus",
+        "Grafana",
+        "Site Reliability Engineering Practices",
+        "Docker",
+        "Linux",
+        "Cloud computing",
+        "AWS",
+        "Jenkins",
+        "ArgoCD",
+        "Spring Boot",
+        "Laravel",
+        "Symfony",
+        "REST APIs",
+        "Relational databases",
+        "MongoDB",
+        "Redis",
+        "Scrum"
+
+Tools:
+- Microsoft Office (Word, Excel)
+- Google Workspace
+- HRIS software
+

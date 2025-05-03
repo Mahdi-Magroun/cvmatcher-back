@@ -22,7 +22,7 @@ class JobPostSerializer(serializers.ModelSerializer):
 
         # Step 1: Extract plain text from uploaded file (.txt or .pdf)
         text = extract_text_from_file(job_post.file.path)
-        job_post.description = text
+        job_post.description = ""
 
         # Step 2: Send the text to DeepSeek API to extract structured job data
         extracted = extract_job_info_with_deepseek(text)
@@ -31,6 +31,7 @@ class JobPostSerializer(serializers.ModelSerializer):
                extracted = {item["field"]: item["value"] for item in extracted}
 
         job_post.skills = extracted.get('skills', [])
+        job_post.description = extracted.get("description", "")
         job_post.education_levels = extracted.get('education_levels', [])
         job_post.experience = extracted.get('experience', "")
         job_post.tools = extracted.get('tools', [])
@@ -59,3 +60,4 @@ class CVScoreSerializer(serializers.ModelSerializer):
      if obj.cv and obj.cv.file and request:
          return request.build_absolute_uri(obj.cv.file.url)
      return None
+ 
